@@ -1,21 +1,18 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using PaymentContext.Domain.Entities.ValueObjects;
 
 namespace PaymentContext.Domain.Entities
 {
    public class CreditCardPayment : Payment
     {
-        public CreditCardPayment(DateTime paidDate, DateTime expireDate, decimal total, decimal totalPaid, string payer, string document, string address, string email, string cardHolderName, string cardNumber, string lastTransactionNumber) : base(paidDate, expireDate, total, totalPaid, payer, document, address, email)
+        public CreditCardPayment(DateTime paidDate, DateTime expireDate, decimal total, decimal totalPaid, string payer, Document document, Address address, Email email, string cardHolderName, string cardNumber, string lastTransactionNumber) : base(paidDate, expireDate, total, totalPaid, payer, document, address, email)
         {
             CardHolderName = cardHolderName;
             CardNumber = cardNumber;
             LastTransactionNumber = lastTransactionNumber;
         }
 
-        public string CardHolderName { get; private set; } = string.Empty;
-        public string CardNumber { get; private set; } = string.Empty;
-        public string LastTransactionNumber { get; private set; } = string.Empty;
+        public string CardHolderName { get; private set; }
+        public string CardNumber { get; private set; }
+        public string LastTransactionNumber { get; private set; }
     }
 }

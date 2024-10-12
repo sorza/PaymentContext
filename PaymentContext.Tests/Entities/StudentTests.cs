@@ -8,8 +8,7 @@ namespace PaymentContext.Tests.Entities
     {
         [TestMethod]
         public void TestMethod()
-        {
-            var student = new Student("Alexandre", "Zordan", "123456789", "ale@zordan.com.br");
+        {         
             
         }
     }
