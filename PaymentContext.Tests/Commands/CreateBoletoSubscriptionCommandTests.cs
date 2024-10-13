@@ -15,6 +15,5 @@ namespace PaymentContext.Tests.Commands
             command.Validate();
             Assert.AreEqual(false, command.IsValid);
         }
-        
     }
 }
