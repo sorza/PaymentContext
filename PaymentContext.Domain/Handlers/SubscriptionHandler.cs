@@ -37,7 +37,7 @@ namespace PaymentContext.Domain.Handlers
             if(_repository.DocumentExists(command.Document)) 
                 AddNotification("Document", "Este CPF já está em uso");
             
-            // Verificar s eemail já está cadastrado
+            // Verificar se email já está cadastrado
             if(_repository.EmailExists(command.Email))
                 AddNotification("Email", "Este E-mail já está em uso");
 
@@ -68,6 +68,10 @@ namespace PaymentContext.Domain.Handlers
             //Agrupar as Validaçoes
             AddNotifications(name, document, email, address, student, subscription, payment);
 
+            //Checar as notificações
+            if(!IsValid)
+                return new CommandResult(false, "Não foi possível realizar sua assinatura");
+
             //Salvar Infos
             _repository.CreateSubscription(student);
 
@@ -77,7 +81,6 @@ namespace PaymentContext.Domain.Handlers
             //Retornar Informações
             return new CommandResult(true, "Assinatura realizada com sucesso!");
         }
-
         public ICommandResult Handle(CreatePayPalSubscriptionCommand command)
         {
             // Verificar se documento já está cadastrado
@@ -114,6 +117,10 @@ namespace PaymentContext.Domain.Handlers
             //Agrupar as Validaçoes
             AddNotifications(name, document, email, address, student, subscription, payment);
 
+             //Checar as notificações
+            if(!IsValid)
+                return new CommandResult(false, "Não foi possível realizar sua assinatura");
+
             //Salvar Infos
             _repository.CreateSubscription(student);
 
@@ -123,7 +130,6 @@ namespace PaymentContext.Domain.Handlers
             //Retornar Informações
             return new CommandResult(true, "Assinatura realizada com sucesso!");
         }
-
         public ICommandResult Handle(CreateCreditCardSubscriptionCommand command)
         {
            // Verificar se documento já está cadastrado
@@ -161,6 +167,10 @@ namespace PaymentContext.Domain.Handlers
 
             //Agrupar as Validaçoes
             AddNotifications(name, document, email, address, student, subscription, payment);
+
+            //Checar as notificações
+            if(!IsValid)
+                return new CommandResult(false, "Não foi possível realizar sua assinatura");
 
             //Salvar Infos
             _repository.CreateSubscription(student);
