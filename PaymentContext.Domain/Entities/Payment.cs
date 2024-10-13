@@ -1,3 +1,4 @@
+using Flunt.Validations;
 using PaymentContext.Domain.Entities.ValueObjects;
 using PaymentContext.Shared.Entities;
 
@@ -17,7 +18,10 @@ namespace PaymentContext.Domain.Entities
             Address = address;
             Email = email;
 
-            AddNotifications()
+            AddNotifications(new Contract<Payment>().Requires()
+                .IsLowerOrEqualsThan(0, Total, "Payment.Total", "O total não pode ser zero")
+                .IsGreaterOrEqualsThan(Total, TotalPaid, "Payment.TotalPaid", "O valor pago é menor que o valor do pagamento.")
+            );
         }
 
         public string Number { get; private set; }

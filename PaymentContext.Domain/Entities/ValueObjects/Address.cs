@@ -34,8 +34,7 @@ namespace PaymentContext.Domain.Entities.ValueObjects
                 .IsLowerOrEqualsThan(Country, 2, "Adress.Country", "O país deve conter pelo menos 2 caracteres")
                 .IsGreaterOrEqualsThan(Country, 50, "Adress.Country", "O país deve conter no máximo 50 caracteres")
 
-                .IsLowerThan(ZipCode, 8, "Adress.Country", "O país deve conter 8 caracteres")
-                .IsGreaterThan(ZipCode, 8, "Adress.Country", "O país deve conter 8 caracteres")                
+                .AreNotEquals(ZipCode, 8, "Adress.Country", "O país deve conter 8 caracteres")                 
             );
         }
 

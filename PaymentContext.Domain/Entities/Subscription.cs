@@ -1,4 +1,5 @@
 using Flunt.Validations;
+using System.Linq;
 using PaymentContext.Shared.Entities;
 
 namespace PaymentContext.Domain.Entities
@@ -19,7 +20,7 @@ namespace PaymentContext.Domain.Entities
         public DateTime LastUpdateDate { get; private set; }
         public DateTime? ExpireDate { get; private set; }       
         public bool Active { get; private set; }
-        public IReadOnlyCollection<Payment>? Payments { get; private set;}
+        public IReadOnlyCollection<Payment>? Payments { get { return _payments.ToArray(); } }
 
         public void AddPayment(Payment payment)
         {
