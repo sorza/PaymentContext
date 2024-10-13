@@ -1,6 +1,3 @@
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using PaymentContext.Domain.Entities;
-
 namespace PaymentContext.Tests.Entities
 {
     [TestClass]
@@ -9,7 +6,7 @@ namespace PaymentContext.Tests.Entities
         [TestMethod]
         public void TestMethod()
         {         
-            
+           
         }
     }
 }
